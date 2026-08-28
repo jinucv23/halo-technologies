@@ -264,6 +264,12 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
 .about-contactcard a:hover{opacity:.75}
 
 .about-figures{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.service-area{padding:clamp(58px,7vw,92px) 0;background:var(--black);border-bottom:1px solid var(--line)}
+.service-area-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,6vw,80px);align-items:start}
+.service-area h2{margin-bottom:16px}
+.service-area-copy{color:var(--muted);max-width:42ch}
+.service-area-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.service-area-list li{padding:10px 14px;border:1px solid var(--line-2);border-radius:8px;background:var(--panel);font-family:var(--font-h);font-size:.88rem;color:var(--text)}
 .figure-box{
   padding:26px 22px;border-radius:var(--r);border:1px solid var(--line);
   background:linear-gradient(160deg,var(--panel-2),var(--black));
@@ -399,6 +405,7 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
   .hero-inner{grid-template-columns:1fr;gap:36px}
   .hero-media{order:-1}
   .feature-inner,.about-inner,.contact-inner{grid-template-columns:1fr}
+  .service-area-inner{grid-template-columns:1fr}
   .feature-media{order:-1}
   .brochure-grid{grid-template-columns:1fr}
   .shot.wide img{aspect-ratio:auto;max-height:78vh}
