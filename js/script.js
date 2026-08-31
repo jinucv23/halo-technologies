@@ -11,7 +11,7 @@
   /* ── Sticky header ────────────────────────────────────── */
   var header = document.getElementById('siteHeader');
   function onScroll() {
-    header.classList.toggle('stuck', window.scrollY > 12);
+    if (header) header.classList.toggle('stuck', window.scrollY > 12);
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -21,16 +21,17 @@
   var nav = document.getElementById('nav');
 
   function setMenu(open) {
+    if (!menuBtn || !nav) return;
     nav.classList.toggle('open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   }
 
-  menuBtn.addEventListener('click', function () {
+  if (menuBtn && nav) menuBtn.addEventListener('click', function () {
     setMenu(menuBtn.getAttribute('aria-expanded') !== 'true');
   });
 
-  nav.addEventListener('click', function (e) {
+  if (nav) nav.addEventListener('click', function (e) {
     if (e.target.closest('a')) setMenu(false);
   });
 
@@ -65,7 +66,7 @@
   /* ── Enquiry form → WhatsApp ──────────────────────────── */
   var form = document.getElementById('enquiryForm');
 
-  form.addEventListener('submit', function (e) {
+  if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     var name = form.querySelector('#f-name');
@@ -97,7 +98,7 @@
     );
   });
 
-  form.addEventListener('input', function (e) {
+  if (form) form.addEventListener('input', function (e) {
     var field = e.target.closest('.field');
     if (field && e.target.value.trim()) field.classList.remove('invalid');
   });
@@ -131,8 +132,8 @@
     });
   });
 
-  lbClose.addEventListener('click', closeLb);
-  lb.addEventListener('click', function (e) {
+  if (lbClose) lbClose.addEventListener('click', closeLb);
+  if (lb) lb.addEventListener('click', function (e) {
     if (e.target === lb) closeLb();
   });
   document.addEventListener('keydown', function (e) {
