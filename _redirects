@@ -1,0 +1,4 @@
+# Defense in depth if someone accidentally deploys the repository root.
+# Normal deployments use dist/, which contains neither docs nor scripts.
+/docs/* /404 302
+/scripts/* /404 302

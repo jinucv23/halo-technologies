@@ -7,8 +7,10 @@ GPS & dash cam · IoT & automation · solar · inverters · lithium batteries.
 
 ## Stack
 
-Plain HTML, CSS and vanilla JS. No build step, no dependencies, no framework.
-Deployed on Cloudflare Pages straight from this repo — push to `main` and it goes live.
+Plain HTML, CSS and vanilla JS; no frontend framework. The Node build uses LinkeDOM
+only at build time to render the existing blog templates as crawlable static HTML.
+Browser interactions still use the same templates and data. HTML Validate is a
+development-only validation tool. Neither dependency is sent to visitors.
 
 ```
 index.html          single page, all sections
@@ -21,24 +23,49 @@ sitemap.xml
 
 ## Local preview
 
-No server required — open `index.html` directly. Or:
+Node 22+ is required. Install and build the public output:
 
 ```sh
-python3 -m http.server 8000
+npm ci
+npm run build
+npm run check
+npm test
+npm run validate:html
+python3 -m http.server 8000 --directory dist
 # http://localhost:8000
 ```
 
 ## Deployment
 
-Cloudflare Pages, connected to this repo's `main` branch.
+Cloudflare Pages, connected to this repo's `main` branch. The Day 1 build settings
+below were confirmed by the project owner. **Do not deploy the repository root.**
+The build explicitly includes public assets and excludes `docs/`, `scripts/`,
+dependencies and repository files. `dist/` is generated and Git-ignored.
 
 | Setting | Value |
 | --- | --- |
 | Framework preset | None |
-| Build command | *(empty)* |
-| Build output directory | `/` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node version | 22 or newer |
 
 Custom domains: `haloled.in` and `www.haloled.in`.
+
+Pages already redirects service `.html` URLs to extensionless URLs. Canonicals,
+sitemap and internal links use those live destinations; source filenames stay the same.
+For local clean-URL navigation, use a static server that resolves extensionless paths
+to `.html` (Python's basic server does not). Existing `.html` source previews still work.
+The `_redirects` file guards internal paths as defense in depth; it is not a
+substitute for deploying only `dist/`. Canonicalizing the `www` hostname requires
+a Cloudflare zone Redirect Rule (see the audit), not a Pages `_redirects` rule.
+
+After deployment and crawler-access checks, use `npm run indexnow -- --all` for a
+dry run, then `npm run indexnow -- --all --submit` for the initial notification.
+Later pass only changed sitemap URLs. The script checks the live public ownership
+file and canonical/indexability before sending. No account credential is needed or
+embedded in browser code. Submission does not guarantee indexing.
+
+Internal Day 1 findings and manual account steps are in `docs/geo-day-01-audit.md`.
 
 ## Editing common things
 

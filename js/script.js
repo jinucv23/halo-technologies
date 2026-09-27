@@ -120,7 +120,7 @@
 
   function closeLb() {
     lb.hidden = true;
-    lbImg.src = '';
+    lbImg.src = 'assets/flyer.jpg';
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
@@ -137,6 +137,6 @@
     if (e.target === lb) closeLb();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !lb.hidden) closeLb();
+    if (e.key === 'Escape' && lb && !lb.hidden) closeLb();
   });
 })();

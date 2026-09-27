@@ -1,0 +1,97 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { parseHTML } from 'linkedom';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const dist = join(root, 'dist');
+const origin = 'https://haloled.in';
+function files(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? files(join(dir, entry.name)) : [join(dir, entry.name)]);
+}
+const pages = files(dist).filter(file => file.endsWith('.html')).map(file => {
+  let path = '/' + file.slice(dist.length + 1).replaceAll('\\', '/');
+  path = path.replace(/index\.html$/, '').replace(/\.html$/, '');
+  return { file, path, document: parseHTML(readFileSync(file, 'utf8')).document };
+});
+const byPath = new Map(pages.map(page => [page.path, page]));
+const normalize = path => path.replace(/index\.html$/, '').replace(/\.html$/, '');
+const sitemap = [...readFileSync(join(dist, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+
+test('deployment excludes internal files and dependencies', () => {
+  for (const name of ['docs', 'scripts', 'node_modules', '.git', 'README.md', 'package.json']) assert.equal(existsSync(join(dist, name)), false, name);
+  assert.ok(existsSync(join(dist, '404.html')));
+});
+test('all useful pages have unique titles, descriptions, H1s and self canonicals without JS', () => {
+  const titles = new Set(), descriptions = new Set();
+  for (const { path, document } of pages) {
+    assert.equal(document.querySelectorAll('h1').length, 1, path);
+    const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
+    assert.equal(new Set(ids).size, ids.length, `duplicate IDs: ${path}`);
+    assert.ok(document.title.includes('Halo Technologies'), path);
+    if (/noindex/.test(document.querySelector('meta[name="robots"]')?.content || '')) continue;
+    assert.equal(document.querySelectorAll('link[rel="canonical"]').length, 1, path);
+    assert.equal(document.querySelector('link[rel="canonical"]').getAttribute('href'), origin + path, path);
+    assert.ok(!titles.has(document.title), path); titles.add(document.title);
+    const description = document.querySelector('meta[name="description"]')?.content;
+    assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
+    assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
+  }
+  assert.equal(titles.size, 11);
+});
+test('sitemap only lists unique indexable canonical pages', () => {
+  assert.equal(new Set(sitemap).size, sitemap.length);
+  assert.equal(sitemap.length, 11);
+  for (const url of sitemap) {
+    const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
+    const page = byPath.get(target.pathname); assert.ok(page, url);
+    assert.doesNotMatch(page.document.querySelector('meta[name="robots"]')?.content || '', /noindex/);
+  }
+});
+test('internal link graph and fragment destinations resolve', () => {
+  for (const { path, document } of pages) {
+    for (const a of document.querySelectorAll('a[href]')) {
+      const url = new URL(a.getAttribute('href'), origin + path);
+      if (url.origin !== origin) continue;
+      const target = byPath.get(normalize(url.pathname));
+      if (!target) { assert.ok(existsSync(join(dist, decodeURIComponent(url.pathname))), `${path} -> ${url}`); continue; }
+      if (url.hash) assert.ok(target.document.getElementById(decodeURIComponent(url.hash.slice(1))), `${path} -> ${url}`);
+    }
+    for (const image of document.querySelectorAll('img')) {
+      assert.ok(image.hasAttribute('alt'), `missing alt: ${path}`);
+      if (image.id === 'lbImg') continue;
+      assert.ok(image.getAttribute('width') && image.getAttribute('height'), `image dimensions: ${path}`);
+    }
+    for (const resource of document.querySelectorAll('img[src],script[src],link[href]')) {
+      const value = resource.getAttribute('src') || resource.getAttribute('href');
+      if (resource.getAttribute('rel') === 'canonical') continue;
+      const url = new URL(value, origin + path);
+      if (url.origin === origin) assert.ok(existsSync(join(dist, decodeURIComponent(url.pathname))), `${path}: missing resource ${value}`);
+    }
+  }
+});
+test('JSON-LD has one business definition and consistent provider/publisher references', () => {
+  let businesses = 0, websites = 0, articles = 0;
+  function visit(value) {
+    if (!value || typeof value !== 'object') return;
+    if (value['@type'] === 'LocalBusiness') { businesses++; assert.equal(value['@id'], origin + '/#business'); assert.equal(value.name, 'Halo Technologies'); }
+    if (value['@type'] === 'WebSite') { websites++; assert.equal(value.publisher['@id'], origin + '/#business'); }
+    if (value['@type'] === 'Article') articles++;
+    for (const role of ['provider', 'publisher', 'author']) if (value[role]) assert.equal(value[role]['@id'], origin + '/#business');
+    Object.values(value).forEach(visit);
+  }
+  for (const { document } of pages) for (const script of document.querySelectorAll('script[type="application/ld+json"]')) visit(JSON.parse(script.textContent));
+  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 4);
+});
+test('analytics retained on every page that previously included it; public robots allowed', () => {
+  for (const { file, document } of pages) {
+    const source = join(root, file.slice(dist.length + 1));
+    if (readFileSync(source, 'utf8').includes('G-9Q00K5GDLY')) assert.ok(document.toString().includes('G-9Q00K5GDLY'));
+  }
+  const robots = readFileSync(join(dist, 'robots.txt'), 'utf8');
+  assert.match(robots, /User-agent: \*\s+Allow: \//);
+  assert.match(robots, /Sitemap: https:\/\/haloled\.in\/sitemap.xml/);
+  assert.doesNotMatch(robots, /Disallow:\s*\//);
+});

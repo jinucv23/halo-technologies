@@ -2,3 +2,6 @@
 Thumbs.db
 *.zip
 .vscode/
+node_modules/
+dist/
+.wrangler/

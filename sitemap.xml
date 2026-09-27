@@ -2,28 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://haloled.in/</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://haloled.in/led-video-wall-kattappana.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://haloled.in/led-video-wall-kattappana</loc>
   </url>
   <url>
-    <loc>https://haloled.in/cctv-installation-kattappana.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://haloled.in/cctv-installation-kattappana</loc>
   </url>
-  <url><loc>https://haloled.in/blog/</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://haloled.in/blog/category/cctv/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://haloled.in/blog/category/led-displays/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://haloled.in/blog/category/networking/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://haloled.in/blog/article/cctv-camera-placement-guide/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://haloled.in/blog/article/poe-vs-wifi-cctv/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://haloled.in/blog/article/led-display-vs-lcd-retail/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://haloled.in/blog/article/network-cabling-new-office/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://haloled.in/blog/</loc></url>
+  <url><loc>https://haloled.in/blog/category/cctv/</loc></url>
+  <url><loc>https://haloled.in/blog/category/led-displays/</loc></url>
+  <url><loc>https://haloled.in/blog/category/networking/</loc></url>
+  <url><loc>https://haloled.in/blog/article/cctv-camera-placement-guide/</loc></url>
+  <url><loc>https://haloled.in/blog/article/poe-vs-wifi-cctv/</loc></url>
+  <url><loc>https://haloled.in/blog/article/led-display-vs-lcd-retail/</loc></url>
+  <url><loc>https://haloled.in/blog/article/network-cabling-new-office/</loc></url>
 </urlset>
