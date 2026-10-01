@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseHTML } from 'linkedom';
+import vm from 'node:vm';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
@@ -19,6 +20,22 @@ const pages = files(dist).filter(file => file.endsWith('.html')).map(file => {
 const byPath = new Map(pages.map(page => [page.path, page]));
 const normalize = path => path.replace(/index\.html$/, '').replace(/\.html$/, '');
 const sitemap = [...readFileSync(join(dist, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+
+test('blog browser rerender preserves prerendered entity identities without duplicates', () => {
+  const data = readFileSync(join(root, 'blog/data/articles.js'), 'utf8');
+  const renderer = readFileSync(join(root, 'blog/blog.js'), 'utf8');
+  for (const page of pages.filter(page => page.path.startsWith('/blog/'))) {
+    const { document, window } = parseHTML(readFileSync(page.file, 'utf8'));
+    const graphs = () => [...document.querySelectorAll('script[type="application/ld+json"]')]
+      .flatMap(script => JSON.parse(script.textContent)['@graph'] || []);
+    const before = JSON.stringify(graphs());
+    const context = vm.createContext({ document, window, location: { pathname: page.path }, Intl, Date });
+    vm.runInContext(data, context, { timeout: 1000 });
+    vm.runInContext(renderer, context, { timeout: 1000 });
+    assert.equal(JSON.stringify(graphs()), before, page.path);
+    assert.equal(document.querySelectorAll('h1').length, 1, page.path);
+  }
+});
 
 test('deployment excludes internal files and dependencies', () => {
   for (const name of ['docs', 'scripts', 'node_modules', '.git', 'README.md', 'package.json']) assert.equal(existsSync(join(dist, name)), false, name);
@@ -94,4 +111,53 @@ test('analytics retained on every page that previously included it; public robot
   assert.match(robots, /User-agent: \*\s+Allow: \//);
   assert.match(robots, /Sitemap: https:\/\/haloled\.in\/sitemap.xml/);
   assert.doesNotMatch(robots, /Disallow:\s*\//);
+});
+
+test('page and service identities form a connected graph without dangling references', () => {
+  const definitions = new Map();
+  const references = new Set();
+  for (const { path, document } of pages) {
+    const graph = [...document.querySelectorAll('script[type="application/ld+json"]')]
+      .flatMap(script => JSON.parse(script.textContent)['@graph'] || []);
+    const noindex = /noindex/.test(document.querySelector('meta[name="robots"]')?.content || '');
+    const pageNodes = graph.filter(node => ['WebPage', 'CollectionPage'].includes(node['@type']));
+    assert.equal(pageNodes.length, noindex ? 0 : 1, path);
+    if (!noindex) {
+      const node = pageNodes[0];
+      assert.equal(node['@id'], origin + path + '#webpage');
+      assert.equal(node.url, origin + path);
+      assert.equal(node.isPartOf['@id'], origin + '/#website');
+      assert.equal(node.name, document.title);
+    }
+    function visit(value) {
+      if (!value || typeof value !== 'object') return;
+      if (value['@id']) {
+        if (value['@type']) {
+          assert.ok(!definitions.has(value['@id']), `duplicate definition: ${value['@id']}`);
+          definitions.set(value['@id'], value);
+        } else references.add(value['@id']);
+      }
+      Object.values(value).forEach(visit);
+    }
+    graph.forEach(visit);
+  }
+  for (const id of references) assert.ok(definitions.has(id), `unresolved entity: ${id}`);
+  for (const path of ['/led-video-wall-kattappana', '/cctv-installation-kattappana']) {
+    const service = definitions.get(origin + path + '#service');
+    assert.equal(service['@type'], 'Service');
+    assert.equal(service.provider['@id'], origin + '/#business');
+    assert.equal(service.mainEntityOfPage['@id'], origin + path + '#webpage');
+    assert.equal(definitions.get(origin + path + '#webpage').mainEntity['@id'], service['@id']);
+    assert.ok(service.areaServed.some(area => area.name === 'Kattappana'));
+    assert.ok(service.areaServed.some(area => area.name === 'Idukki'));
+    const breadcrumb = definitions.get(origin + path + '#breadcrumb');
+    const visible = byPath.get(path).document.querySelector('[aria-label="Breadcrumb"]');
+    assert.ok(visible);
+    assert.equal(visible.querySelector('[aria-current="page"]').textContent,
+      breadcrumb.itemListElement.at(-1).name);
+  }
+  const offers = definitions.get(origin + '/#business').makesOffer;
+  for (const path of ['/led-video-wall-kattappana', '/cctv-installation-kattappana']) {
+    assert.equal(offers.filter(offer => offer.itemOffered['@id'] === origin + path + '#service').length, 1);
+  }
 });

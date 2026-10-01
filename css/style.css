@@ -430,3 +430,8 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* Service breadcrumb uses the existing muted text and link colors. */
+.service-breadcrumbs{font-size:.86rem;color:var(--muted);margin-bottom:24px;overflow-wrap:anywhere}
+.service-breadcrumbs a{color:var(--text)}
+.service-breadcrumbs a:hover{color:var(--lime)}
