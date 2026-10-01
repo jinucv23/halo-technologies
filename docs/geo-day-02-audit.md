@@ -53,6 +53,8 @@ Headless Edge checked all 22 pages at 320, 390, 768, 901, 1024 and 1440 pixels: 
 
 Deployment is authorized after these checks; the exact production commit/deployment and post-deployment results will be reported in the completion message. This committed audit records the pre-deployment verification, rather than claiming a future deployment succeeded.
 
+Initial rollout: `c210994ebdcb3eca44870f0facfaf15513aa5081`, Cloudflare production deployment `d11a91d4-081f-4d4c-8559-a9d46552f6b4`, succeeded using Node 22.22.0. Live checks confirmed the new graph matched the build, all 22 pages remained valid, all 11 sitemap URLs returned direct canonical 200 responses, XML and redirect behavior remained correct, and unknown routes returned 404. The live web font exposed a 13px overflow at 320px in the new CCTV related-service button; the local offline-font test had not caught it. The label was shortened to “LED displays and signage”. Rechecking the corrected page with the real web font at all six widths passed; build, all eight tests and HTML validation passed again. The follow-up deployment and final live results are reported in the completion message.
+
 No changes to `robots.txt`, `sitemap.xml`, `_redirects`, package dependencies or deployment configuration. Sitemap membership remains 11 canonical URLs. Nine empty categories remain noindex; Connect and the 404 page retain their existing robots behavior.
 
 ## Search Console follow-up
