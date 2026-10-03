@@ -16,6 +16,78 @@ window.HALO_BLOG = {
   ],
   articles: [
     {
+  "id": "cctv-kumily-project",
+  "slug": "cctv-cardamom-plantation-kumily",
+  "category": "cctv",
+  "title": "CCTV for a Cardamom Plantation near Kumily – How We Improved Night Security",
+  "description": "Security in a cardamom plantation is very different from installing CCTV in a house or shop. This real project in Vellaramkunnu, near Kumily, combined careful camera placement, outdoor cabling and SIM-based remote viewing.",
+  "author": "Halo Technologies",
+  "publishedDate": "2026-10-03",
+  "modifiedDate": "2026-10-03",
+  "breadcrumbTitle": "CCTV for a Cardamom Plantation near Kumily",
+  "readingTime": "5 min read",
+  "image": "/assets/blog/cctv-cardamom-plantation-kumily.webp",
+  "imageAlt": "CCTV installation in a cardamom plantation near Kumily Idukki",
+  "imageWidth": 960,
+  "imageHeight": 1280,
+  "imageCaption": "CCTV installation at a cardamom plantation near Kumily, Idukki.",
+  "tags": [
+    "cctv",
+    "cardamom plantation",
+    "plantation security",
+    "Kumily"
+  ],
+  "relatedServices": [
+    "/cctv-installation-kattappana"
+  ],
+  "relatedArticles": [
+    "cctv-placement"
+  ],
+  "seoTitle": "CCTV for Cardamom Plantation near Kumily | Halo Technologies",
+  "seoDescription": "A real CCTV installation for a cardamom plantation near Kumily, Idukki. See how Halo Technologies designed camera placement, outdoor cabling and SIM-based remote viewing to improve plantation security.",
+  "takeaway": "Five cameras, an expandable eight-channel DVR, lower camera positions through gaps in the vegetation, outdoor-rated CAT6 cable and SIM-based remote viewing were planned together to support plantation security.",
+  "sections": [
+    [
+      "The Security Challenge",
+      "<p>A customer from Vellaramkunnu, near Kumily, approached <a href=\"/\">Halo Technologies</a> looking for a CCTV solution for his cardamom plantation. His main concern was repeated cardamom theft when the family or workers were not nearby.</p><p>Initially, the customer planned to install four cameras. After understanding the site and his requirements, we recommended an 8-channel Hikvision DVR supporting cameras up to 5MP instead of limiting the system to four channels.</p><p>That decision proved useful during installation. After seeing the coverage possibilities at the plantation, the customer decided to add one more camera, bringing the total to five without needing to replace the DVR.</p>"
+    ],
+    [
+      "The CCTV System Installed",
+      "<p>The completed system included:</p><ul><li>8-channel Hikvision DVR supporting cameras up to 5MP</li><li>Four 3K audio dual-light bullet cameras</li><li>One 2MP ColorVu audio camera</li><li>Outdoor-rated CAT6 cabling</li><li>SIM-based internet connectivity for remote viewing</li></ul><p>However, choosing the cameras was only part of the solution. The bigger challenge was deciding where the cameras should be positioned.</p>"
+    ],
+    [
+      "Why We Installed the Cameras Lower in the Plantation",
+      "<p>Cardamom plantations have dense vegetation. If cameras are positioned too high, leaves and plants can obstruct useful viewing areas, particularly at night.</p><p>After inspecting the plantation, we suggested positioning cameras at carefully selected lower points where they could look through gaps between the plants. This gives the owner a clearer view of movement through the monitored sections of the plantation and makes it easier to observe people entering those areas.</p><figure class=\"project-media\"><img src=\"/assets/blog/cctv-low-level-camera-position-cardamom-plantation.webp\" alt=\"Low positioned CCTV camera monitoring a cardamom plantation near Kumily\" width=\"960\" height=\"1280\" loading=\"lazy\"><figcaption>Camera positioned lower in the plantation to improve visibility through dense cardamom vegetation.</figcaption></figure><p>The customer naturally had another concern: “If the camera is installed lower, what if somebody damages it?”</p><p>We addressed this by planning the camera positions so that, wherever practical, one camera’s coverage supports another camera’s location. Instead of treating every camera as an independent device, the cameras work together as a surveillance system.</p><p>This approach helped address two important issues:</p><ol><li>Better night-time visibility through dense plantation vegetation.</li><li>Better monitoring of the locations where the cameras themselves are installed.</li></ol><p>The aim is to improve monitoring and support plantation security; CCTV does not guarantee prevention of theft.</p>"
+    ],
+    [
+      "Outdoor Cabling for Plantation Conditions",
+      "<p>A plantation installation is exposed to rain, moisture, vegetation and changing outdoor conditions. For this reason, Halo Technologies used outdoor-rated CAT6 cable rather than treating the installation like a conventional indoor CCTV installation.</p><p>Cable routing, joints and camera connections were planned with the outdoor environment in mind. Selecting suitable cable and considering where connections sit are part of planning a system for plantation conditions.</p>"
+    ],
+    [
+      "Remote Viewing Without Broadband",
+      "<p>There was no fixed broadband connection available at the site, but the customer wanted remote access to the CCTV system. Halo Technologies therefore provided a SIM-based internet solution.</p><p>This enables remote viewing where suitable mobile-network connectivity is available without requiring a conventional broadband connection at the plantation. Remote access depends on mobile-network availability at the site.</p>"
+    ],
+    [
+      "The Result",
+      "<p>What started as a requirement for four cameras became a five-camera plantation surveillance system with room available for future expansion.</p><p>More importantly, this project demonstrates why CCTV installation is not simply about choosing cameras based on megapixels. For an outdoor property such as a cardamom plantation, camera positioning, vegetation, night visibility, cable selection, internet availability and future expansion should be considered together.</p><p>Halo Technologies provides <a href=\"/cctv-installation-kattappana\">CCTV solutions for homes, businesses, plantations and other properties</a> in Kattappana, Kumily and surrounding areas of Idukki, Kerala, with systems designed according to actual site conditions and customer requirements.</p><figure class=\"project-media\"><video controls preload=\"none\" playsinline width=\"540\" height=\"960\" poster=\"/assets/blog/cctv-cardamom-plantation-video-poster.webp\" aria-label=\"Cardamom plantation CCTV project video\" aria-describedby=\"plantation-video-caption\"><source src=\"/assets/blog/cctv-cardamom-plantation-kumily.mp4\" type=\"video/mp4\"><a href=\"/assets/blog/cctv-cardamom-plantation-kumily.mp4\">Watch the project video</a></video><figcaption id=\"plantation-video-caption\">Original footage from the plantation CCTV project. Optimized for web playback; audio removed. The video loads when played.</figcaption></figure>"
+    ]
+  ],
+  "tips": [
+    "Plan camera views through gaps in the vegetation.",
+    "Consider outdoor cable routes and connections.",
+    "Check mobile-network availability for remote viewing."
+  ],
+  "mistakes": [
+    "Choosing camera count without considering future expansion.",
+    "Assuming a higher mounting point always gives better plantation coverage.",
+    "Assuming remote viewing is independent of mobile-network availability."
+  ],
+  "faq": [],
+  "ctaTitle": "Need CCTV for a Plantation or Property in Idukki?",
+  "ctaDescription": "Planning CCTV for a plantation, home or business in Idukki? Halo Technologies can inspect the site and recommend a system based on the actual coverage, connectivity and environmental requirements.",
+  "authorNote": "This case study uses Halo Technologies’ supplied project details and original plantation installation photographs and video."
+},
+    {
   "id": "p10-kattappana-project",
   "slug": "p10-led-scrolling-board-installation-kattappana",
   "category": "led-displays",

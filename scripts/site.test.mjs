@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 12);
+  assert.equal(titles.size, 13);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 12);
+  assert.equal(sitemap.length, 13);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -100,7 +100,7 @@ test('JSON-LD has one business definition and consistent provider/publisher refe
     Object.values(value).forEach(visit);
   }
   for (const { document } of pages) for (const script of document.querySelectorAll('script[type="application/ld+json"]')) visit(JSON.parse(script.textContent));
-  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 5);
+  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 6);
 });
 test('analytics retained on every page that previously included it; public robots allowed', () => {
   for (const { file, document } of pages) {
@@ -193,4 +193,25 @@ test('P10 case study exposes real media and content in static HTML with lightwei
   for (const sourcePath of ['/', '/led-video-wall-kattappana', '/blog/', '/blog/category/led-displays/', '/blog/article/led-display-vs-lcd-retail/']) {
     assert.ok([...byPath.get(sourcePath).document.querySelectorAll('a[href]')].some(a => new URL(a.getAttribute('href'), origin + sourcePath).pathname === path), sourcePath);
   }
+});
+
+test('plantation case study is static, connected and uses supplied lightweight media', () => {
+  const path = '/blog/article/cctv-cardamom-plantation-kumily/';
+  const document = byPath.get(path).document;
+  for (const detail of ['Vellaramkunnu', '8-channel Hikvision', 'Four 3K', '2MP ColorVu', 'CAT6', 'SIM-based', 'does not guarantee']) assert.ok(document.querySelector('article').textContent.includes(detail), detail);
+  const graph = JSON.parse(document.getElementById('structuredData').textContent)['@graph'];
+  const article = graph.find(node => node['@type'] === 'Article');
+  assert.equal(article.dateModified, '2026-10-03');
+  assert.equal(article.about['@id'], origin + '/cctv-installation-kattappana#service');
+  assert.equal(article.image, document.querySelector('meta[property="og:image"]').content);
+  const breadcrumb = graph.find(node => node['@type'] === 'BreadcrumbList');
+  assert.deepEqual(breadcrumb.itemListElement.map(item => item.name), ['Home', 'Blog', 'CCTV for a Cardamom Plantation near Kumily']);
+  assert.equal(document.querySelector('[aria-current="page"]').textContent, breadcrumb.itemListElement.at(-1).name);
+  const video = document.querySelector('video');
+  assert.equal(video.getAttribute('preload'), 'none');
+  assert.ok(video.hasAttribute('controls') && !video.hasAttribute('autoplay'));
+  for (const media of [video.getAttribute('poster'), video.querySelector('source').getAttribute('src')]) assert.ok(existsSync(join(dist, media)));
+  const bytes = readFileSync(join(dist, video.querySelector('source').getAttribute('src')));
+  assert.ok(bytes.indexOf('moov') < bytes.indexOf('mdat'));
+  for (const source of ['/blog/', '/blog/category/cctv/']) assert.ok([...byPath.get(source).document.querySelectorAll('a[href]')].some(a => a.getAttribute('href') === path));
 });

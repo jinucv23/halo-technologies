@@ -56,6 +56,15 @@
     };
     if (articleNode) {
       articleNode['@id'] = url + '#article';
+      if (article.modifiedDate) articleNode.dateModified = article.modifiedDate;
+      if (article.breadcrumbTitle) {
+        breadcrumb.itemListElement = [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://haloled.in/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://haloled.in/blog/' },
+          { '@type': 'ListItem', position: 3, name: article.breadcrumbTitle, item: url }
+        ];
+        document.querySelector('.breadcrumbs').innerHTML = '<a href="/">Home</a> / <a href="/blog/">Blog</a> / <span aria-current="page">' + esc(article.breadcrumbTitle) + '</span>';
+      }
       articleNode.mainEntityOfPage = { '@id': page['@id'] };
       articleNode.about = { '@id': topic };
       page.mainEntity = { '@id': articleNode['@id'] };
