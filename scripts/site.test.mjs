@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 11);
+  assert.equal(titles.size, 12);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 11);
+  assert.equal(sitemap.length, 12);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -100,7 +100,7 @@ test('JSON-LD has one business definition and consistent provider/publisher refe
     Object.values(value).forEach(visit);
   }
   for (const { document } of pages) for (const script of document.querySelectorAll('script[type="application/ld+json"]')) visit(JSON.parse(script.textContent));
-  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 4);
+  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 5);
 });
 test('analytics retained on every page that previously included it; public robots allowed', () => {
   for (const { file, document } of pages) {
@@ -159,5 +159,38 @@ test('page and service identities form a connected graph without dangling refere
   const offers = definitions.get(origin + '/#business').makesOffer;
   for (const path of ['/led-video-wall-kattappana', '/cctv-installation-kattappana']) {
     assert.equal(offers.filter(offer => offer.itemOffered['@id'] === origin + path + '#service').length, 1);
+  }
+});
+
+test('P10 case study exposes real media and content in static HTML with lightweight playback', () => {
+  const path = '/blog/article/p10-led-scrolling-board-installation-kattappana/';
+  const document = byPath.get(path).document;
+  const text = document.querySelector('article').textContent;
+  for (const detail of ['New Bus Stand', '192 cm', '96 cm', 'HUIDU', 'since 2018', 'local Wi-Fi']) assert.ok(text.includes(detail), detail);
+  assert.equal(document.querySelectorAll('video').length, 3);
+  for (const video of document.querySelectorAll('video')) {
+    assert.ok(video.hasAttribute('controls'));
+    assert.ok(!video.hasAttribute('autoplay'));
+    assert.equal(video.getAttribute('preload'), 'none');
+    assert.ok(video.getAttribute('width') && video.getAttribute('height'));
+    assert.ok(document.getElementById(video.getAttribute('aria-describedby')));
+    const source = video.querySelector('source');
+    assert.equal(source.getAttribute('type'), 'video/mp4');
+    for (const mediaPath of [source.getAttribute('src'), video.getAttribute('poster')]) {
+      assert.ok(mediaPath.startsWith('/assets/blog/p10-'));
+      assert.ok(existsSync(join(dist, mediaPath)), mediaPath);
+    }
+    const bytes = readFileSync(join(dist, source.getAttribute('src')));
+    assert.ok(bytes.indexOf('moov') > 0 && bytes.indexOf('moov') < bytes.indexOf('mdat'), 'MP4 fast-start metadata');
+  }
+  const graph = JSON.parse(document.getElementById('structuredData').textContent)['@graph'];
+  const article = graph.find(node => node['@type'] === 'Article');
+  assert.equal(article.datePublished, '2026-10-03');
+  assert.equal(article.about['@id'], origin + '/led-video-wall-kattappana#service');
+  assert.equal(article.image, document.querySelector('meta[property="og:image"]').content);
+  assert.ok(article.image.includes('/assets/blog/p10-'));
+  assert.ok(!graph.some(node => ['FAQPage', 'Review', 'AggregateRating', 'VideoObject'].includes(node['@type'])));
+  for (const sourcePath of ['/', '/led-video-wall-kattappana', '/blog/', '/blog/category/led-displays/', '/blog/article/led-display-vs-lcd-retail/']) {
+    assert.ok([...byPath.get(sourcePath).document.querySelectorAll('a[href]')].some(a => new URL(a.getAttribute('href'), origin + sourcePath).pathname === path), sourcePath);
   }
 });

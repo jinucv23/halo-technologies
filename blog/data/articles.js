@@ -16,6 +16,93 @@ window.HALO_BLOG = {
   ],
   articles: [
     {
+  "id": "p10-kattappana-project",
+  "slug": "p10-led-scrolling-board-installation-kattappana",
+  "category": "led-displays",
+  "title": "P10 LED Scrolling Board Assembly & Installation in Kattappana: A Real-World Project",
+  "description": "Halo Technologies assembled and installed two outdoor P10 single-color scrolling boards near New Bus Stand, Kattappana: a horizontal red display and a vertical yellow display. This case study documents the work with our assembly photograph and workshop and installation footage.",
+  "author": "Halo Technologies",
+  "publishedDate": "2026-10-03",
+  "readingTime": "7 min read",
+  "image": "/assets/blog/p10-red-scrolling-board-kattappana.webp",
+  "imageAlt": "Red horizontal P10 LED scrolling board operating above a shop entrance in Kattappana",
+  "imageWidth": 464,
+  "imageHeight": 250,
+  "imageCaption": "A genuine frame from the completed installation video. The red display shows scrolling text; this is a single-color message board, not a full-color video wall.",
+  "tags": [
+    "led display",
+    "digital signage",
+    "P10",
+    "scrolling board",
+    "case study",
+    "Kattappana"
+  ],
+  "relatedServices": [
+    "/led-video-wall-kattappana#signage"
+  ],
+  "relatedArticles": [
+    "led-vs-lcd"
+  ],
+  "seoTitle": "P10 LED Scrolling Board Installation in Kattappana | Halo Technologies",
+  "seoDescription": "See how Halo Technologies assembled, weather-protected, tested and installed two P10 LED scrolling boards for a real outdoor project in Kattappana.",
+  "takeaway": "This project combined a horizontal red board and a vertical yellow board with workshop assembly, rear-side sealing, testing and local Wi-Fi content control. Halo Technologies completed installation and showed the customer how to update messages from a compatible mobile app.",
+  "sections": [
+    [
+      "Project at a glance",
+      "<dl class=\"project-facts\"><dt>Location</dt><dd>Near New Bus Stand, Kattappana, Idukki, Kerala.</dd><dt>Application</dt><dd>Outdoor scrolling messages for services, promotions and changing information.</dd><dt>Horizontal display</dt><dd>Red P10 single-color board; approximately 192 cm wide × 32 cm high, described as a nominal 6 ft × 1 ft board.</dd><dt>Vertical display</dt><dd>Yellow P10 single-color board; approximately 96 cm high × 32 cm wide, described as a nominal 3 ft × 1 ft board.</dd><dt>Modules</dt><dd>Approximately 32 cm × 16 cm each.</dd><dt>Frame and rear cover</dt><dd>Approximately 1 × 1.5 inch aluminium frame with a black powder-coated finish; GI sheet/coil rear cover.</dd><dt>Controller and updating</dt><dd>HUIDU Wi-Fi controller with a compatible mobile application for local content updates.</dd><dt>Assembly and installation</dt><dd>Halo Technologies, Kattappana.</dd></dl><p>The sizes above are approximate project dimensions. The nominal feet descriptions are not exact conversions of the centimetre measurements.</p>"
+    ],
+    [
+      "Project requirement",
+      "<p>The customer needed outdoor displays for service information and promotional messages that could change without replacing a printed sign. The installation used two formats: a long horizontal red board above the entrance and a narrow vertical yellow board.</p><p>The completed video records both displays running at night. The project dimensions, construction details and handover process described here come from our project record; the media shows the assembly work and the operating installation.</p>"
+    ],
+    [
+      "P10 module and display configuration",
+      "<p><strong>General explanation:</strong> P10 refers to a 10 mm pixel pitch, the spacing between adjacent pixels. A single-color board displays its content in one LED colour. These boards are intended for scrolling text and messages; they are different from full-color LED video walls used for video and other visual content. <a href=\"https://www.myddisplay.com/productdetail/single-color-dip-led-module.html\">Meiyad’s single-color module specifications</a> provide a manufacturer reference for the 10 mm pitch and 32 × 16 cm module format.</p><p><strong>This project:</strong> the horizontal display uses red LEDs and the vertical display uses yellow LEDs. Modules were arranged to suit each board’s shape and orientation.</p><p>Depending on availability and project requirements, Halo Technologies uses P10 modules from suppliers such as Colorstar, Meiyad and Qiangli. This is a description of our sourcing options, not a claim that all three brands were used in these two displays.</p>"
+    ],
+    [
+      "Building the scrolling board in our assembly section",
+      "<p>We prepared the required frame in our assembly section, using approximately 1 × 1.5 inch aluminium with a black powder-coated finish. The P10 modules were mounted in the frame before the rear was closed.</p><p>The assembly photograph shows why the open-back stage matters: module mounting, power wiring, ribbon connections and the areas being sealed are accessible together. The GI rear cover was fitted only after the inspection and testing stages.</p>"
+    ],
+    [
+      "Rear-side wiring and controller installation",
+      "<p>Power wiring and data/ribbon connections were completed at the rear of the modules. A HUIDU Wi-Fi controller was installed and configured to run the scrolling content. SMPS capacity was selected for the required display load.</p><p>The power-supply quantity, electrical ratings and circuit details are not specified in this case study. Electrical inspection and testing formed part of the professional assembly process; the photograph is a record of work in progress, not a mains-wiring guide.</p>"
+    ],
+    [
+      "Outdoor weather protection for Idukki conditions",
+      "<p>Seasonal rain is an important consideration for outdoor installations in Kattappana and Idukki. Water protection therefore received attention before the back cover was closed.</p><p>Halo Technologies has used silicone sealing around vulnerable rear-side areas of outdoor LED boards since 2018. This practice developed from our outdoor installation experience and forms part of our assembly process.</p><p>For this installation, we applied silicone at vulnerable rear module areas and used additional suitable sealing or taping where necessary. After inspection and testing, the GI rear cover was closed. The photograph and workshop video show the rear-side sealing stage.</p><figure class=\"project-media\"><img src=\"/assets/blog/p10-scrolling-board-assembly-kattappana.webp\" alt=\"Rear of P10 LED modules with power wires, ribbon cables and silicone sealing during assembly at Halo Technologies\" width=\"1600\" height=\"1200\" loading=\"lazy\"><figcaption>Rear-side assembly and silicone sealing of P10 LED modules at Halo Technologies before the outdoor scrolling board was closed and installed.</figcaption></figure><figure class=\"project-media\"><video controls preload=\"none\" playsinline width=\"576\" height=\"608\" poster=\"/assets/blog/p10-led-module-silicone-sealing-kattappana.webp\" aria-label=\"Workshop video: rear-side silicone application\" aria-describedby=\"p10-led-module-silicone-sealing-kattappana-caption\"><source src=\"/assets/blog/p10-led-module-silicone-sealing-kattappana.mp4\" type=\"video/mp4\"><a href=\"/assets/blog/p10-led-module-silicone-sealing-kattappana.mp4\">Watch the project video</a></video><figcaption id=\"p10-led-module-silicone-sealing-kattappana-caption\">Workshop footage shows silicone being worked around rear module areas alongside the power wiring and ribbon connections. Cropped to focus on the assembly; audio removed.</figcaption></figure><p>Sealing is one part of the water-ingress protection approach. We do not assign an unverified IP rating or claim that this process guarantees waterproofing or a particular service life.</p>"
+    ],
+    [
+      "Testing before closing the cabinet",
+      "<p>Before closing the rear, our checks covered LED operation and brightness, wiring inspection, controller and data connections, and scrolling-content operation. The sealing work was also inspected.</p><ol><li>Inspect LED operation and brightness across the display.</li><li>Inspect the completed wiring and check controller/data operation.</li><li>Run the scrolling content and check the displayed output.</li><li>Inspect the sealing work before closing the GI rear cover.</li></ol><p>These were workshop checks followed by a final operational test at the installation site. No numerical brightness measurement or waterproof test result is claimed here.</p>"
+    ],
+    [
+      "Mobile content updating with the HUIDU Wi-Fi controller",
+      "<p>A compatible application was installed and configured on the customer’s mobile phone. During handover, we explained how to change the board’s displayed content using the controller’s local Wi-Fi connection.</p><p>The customer can update services, announcements, promotional messages and offers. This project uses local Wi-Fi/mobile-app content management; it is not presented as an internet or cloud-based remote-update installation.</p>"
+    ],
+    [
+      "Final installation near New Bus Stand, Kattappana",
+      "<p>After workshop testing and rear-cover closure, the boards were installed near New Bus Stand and checked in operation. The two views below come from the same original installation video: the horizontal red board first, followed by the vertical yellow board.</p><figure class=\"project-media\"><video controls preload=\"none\" playsinline width=\"464\" height=\"250\" poster=\"/assets/blog/p10-red-scrolling-board-kattappana.webp\" aria-label=\"Installation video: horizontal red P10 scrolling display\" aria-describedby=\"p10-red-scrolling-board-kattappana-caption\"><source src=\"/assets/blog/p10-red-scrolling-board-kattappana.mp4\" type=\"video/mp4\"><a href=\"/assets/blog/p10-red-scrolling-board-kattappana.mp4\">Watch the project video</a></video><figcaption id=\"p10-red-scrolling-board-kattappana-caption\">Horizontal red P10 scrolling board operating at night near New Bus Stand, Kattappana. This cropped excerpt shows the nominal 6 ft wide × 1 ft high display scrolling text.</figcaption></figure><figure class=\"project-media\"><video controls preload=\"none\" playsinline width=\"136\" height=\"340\" poster=\"/assets/blog/p10-yellow-vertical-scrolling-board-kattappana.webp\" aria-label=\"Installation video: vertical yellow P10 scrolling display\" aria-describedby=\"p10-yellow-vertical-scrolling-board-kattappana-caption\"><source src=\"/assets/blog/p10-yellow-vertical-scrolling-board-kattappana.mp4\" type=\"video/mp4\"><a href=\"/assets/blog/p10-yellow-vertical-scrolling-board-kattappana.mp4\">Watch the project video</a></video><figcaption id=\"p10-yellow-vertical-scrolling-board-kattappana-caption\">Vertical yellow P10 scrolling board at the same installation, nominally 3 ft high × 1 ft wide. A separate crop from the same original night video keeps the operating display in view and excludes nearby people.</figcaption></figure><p>The excerpts are cropped for privacy and focus, and contain no audio. The scrolling messages and LED colours are retained from the original footage. The project text provides the context for readers who do not play the videos.</p>"
+    ],
+    [
+      "What this real installation demonstrates",
+      "<p>A working scrolling board involves more than choosing modules. This project took the requirement through frame preparation, module mounting, power and data connections, rear-side weather sealing, controller configuration, workshop testing, rear closure, site installation and customer handover.</p><p>The practical connection between those stages is visible in the evidence: the rear assembly is accessible during sealing and inspection, while the final video shows the two different display formats operating. Teaching the customer to change messages was part of completing the job.</p><p>For broader display selection, see our <a href=\"/blog/article/led-display-vs-lcd-retail/\">LED and LCD retail display comparison</a>. It covers a different decision from this single-color text-board installation.</p>"
+    ]
+  ],
+  "tips": [
+    "Decide whether the content needs simple scrolling text or full-color images and video.",
+    "Plan the board orientation around the available installation space.",
+    "Include content-updating instruction in the handover."
+  ],
+  "mistakes": [
+    "Treating a single-color scrolling board as interchangeable with a full-color video wall.",
+    "Assuming local Wi-Fi content updating means internet-based remote control."
+  ],
+  "faq": [],
+  "ctaTitle": "P10 LED scrolling boards from Halo Technologies",
+  "ctaDescription": "Halo Technologies in Kattappana assembles and installs LED scrolling boards and digital signage according to project requirements. Share your location, available space and the messages you need to display.",
+  "authorNote": "This project was assembled and installed by Halo Technologies. The case study uses our project details and original assembly and installation media."
+},
+    {
       id: 'cctv-placement', slug: 'cctv-camera-placement-guide', category: 'cctv', title: 'CCTV Camera Placement Guide for Shops and Small Commercial Sites',
       description: 'A practical way to plan camera coverage around entrances, counters, stock areas and blind spots before installation.',
       author: 'Halo Technologies', publishedDate: '2026-08-31', readingTime: '6 min read', image: '/assets/blog/cctv-camera-placement-shop.webp', imageAlt: 'CCTV camera positioned to monitor a commercial shop entrance',
@@ -40,7 +127,7 @@ window.HALO_BLOG = {
       tips: ['Use a dedicated network path where the CCTV system needs dependable recording.', 'Check Wi-Fi signal at the intended camera height.', 'Specify surge and power protection for outdoor cable runs.'], mistakes: ['Mixing unknown consumer cameras into a commercial recorder plan.', 'Running exposed cable where it can be cut or damaged.'], faq: []
     },
     {
-      id: 'led-vs-lcd', slug: 'led-display-vs-lcd-retail', category: 'led-displays', title: 'LED Display vs LCD Display for Retail: How to Choose', description: 'Compare viewing distance, brightness, content, installation and maintenance considerations for retail displays.', author: 'Halo Technologies', publishedDate: '2026-08-31', readingTime: '6 min read', image: '/assets/blog/led-display-retail-comparison.webp', imageAlt: 'Commercial LED display installed for retail visibility', tags: ['led display', 'lcd display', 'retail', 'digital signage'], relatedServices: ['/led-video-wall-kattappana'], relatedArticles: [], seoTitle: 'LED Display vs LCD Display for Retail | Halo Technologies', seoDescription: 'A practical comparison of LED and LCD displays for retail, including viewing distance, brightness and installation considerations.',
+      id: 'led-vs-lcd', slug: 'led-display-vs-lcd-retail', category: 'led-displays', title: 'LED Display vs LCD Display for Retail: How to Choose', description: 'Compare viewing distance, brightness, content, installation and maintenance considerations for retail displays.', author: 'Halo Technologies', publishedDate: '2026-08-31', readingTime: '6 min read', image: '/assets/blog/led-display-retail-comparison.webp', imageAlt: 'Commercial LED display installed for retail visibility', tags: ['led display', 'lcd display', 'retail', 'digital signage'], relatedServices: ['/led-video-wall-kattappana'], relatedArticles: ['p10-kattappana-project'], seoTitle: 'LED Display vs LCD Display for Retail | Halo Technologies', seoDescription: 'A practical comparison of LED and LCD displays for retail, including viewing distance, brightness and installation considerations.',
       takeaway: 'Choose based on where people stand, how bright the environment is, the content you need to show and how the display will be mounted and serviced—not on screen size alone.', sections: [['Start with viewing distance', '<p>Pixel pitch and viewing distance matter for LED displays. A display that looks sharp from the pavement may not suit viewers standing close to a counter. LCD can be appropriate for close-range detail; LED offers flexible large-format layouts.</p>'], ['Account for the environment', '<p>Outdoor or high-ambient-light locations need a display planned for their actual environment. Consider direct sunlight, weather exposure, ventilation, power and safe structure mounting.</p>'], ['Plan content and maintenance', '<p>Decide who updates the display and how often. A practical installation includes access for service, a suitable controller and a clear content workflow.</p>']], tips: ['Measure the closest and farthest typical viewing positions.', 'Confirm available power and cable routes before selecting the display.', 'Plan structural support before ordering a large-format display.'], mistakes: ['Selecting pixel pitch from a product sheet without checking viewing distance.', 'Treating content management as an afterthought.'], faq: []
     },
     {
