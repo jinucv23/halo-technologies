@@ -1,0 +1,41 @@
+.signage-hero{padding:150px 0 72px;background:radial-gradient(ellipse at 85% 20%,var(--lime-dim),transparent 65%),var(--black)}
+.signage-hero h1{max-width:850px;margin:12px 0 24px}
+.signage-hero .lead{max-width:70ch}
+.signage-hero .signage-copy{margin-top:20px}
+.signage-copy{max-width:72ch;color:var(--muted)}
+.signage-copy p+p{margin-top:18px}
+.signage-flow+.signage-copy,.signage-list+.signage-copy{margin-top:24px}
+.signage-actions,.signage-topics{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.signage-topics{gap:12px 24px;font-size:.9rem;color:var(--text)}
+.signage-topics a,.signage-copy a,.signage-card p a,.signage-project figcaption a{text-decoration:underline;text-underline-offset:4px}
+.signage-section{padding:76px 0;border-top:1px solid var(--line)}
+.signage-section:nth-of-type(even){background:var(--panel)}
+.signage-head{max-width:72ch;margin-bottom:32px}
+.signage-head h2{margin-bottom:18px}
+.signage-head p,.signage-card p{color:var(--muted)}
+.signage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.signage-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.signage-card{padding:26px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--panel-2)}
+.signage-card h3{font-size:1.3rem;line-height:1.2;margin-bottom:14px}
+.signage-card p+p{margin-top:16px}
+.signage-list{padding-left:22px;display:grid;gap:12px;color:var(--muted);max-width:72ch;margin-top:20px}
+.signage-list strong{color:var(--text)}
+.signage-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;gap:14px;counter-reset:step}
+.signage-flow li{padding:22px;border:1px solid var(--line);border-radius:var(--r);counter-increment:step;color:var(--muted)}
+.signage-flow li::before{content:counter(step);display:block;color:var(--lime);font-weight:700;font-family:var(--font-h);margin-bottom:12px}
+.signage-flow strong{display:block;color:var(--text);margin-bottom:8px}
+.signage-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:24px 0}
+.signage-table-hint{display:none;font-size:.85rem;color:var(--muted)}
+.signage-table{width:100%;min-width:540px;border-collapse:collapse;text-align:left;font-size:.92rem}
+.signage-table caption{text-align:left;padding:18px;color:var(--text);font-weight:600}
+.signage-table th,.signage-table td{padding:16px 18px;border-top:1px solid var(--line);vertical-align:top}
+.signage-table thead{background:var(--panel-2)}
+.signage-table td{color:var(--muted)}
+.signage-project{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.signage-project img{width:100%;border-radius:var(--r);background:var(--black)}
+.signage-project figcaption{font-size:.85rem;color:var(--muted);margin-top:14px}
+.signage-footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.signage-footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:900px){.signage-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.signage-hero{padding-top:120px}.signage-section{padding:56px 0}.signage-grid,.signage-grid.two,.signage-project{grid-template-columns:1fr}.signage-actions .btn{white-space:normal;text-align:center}.signage-table-hint{display:block}}
+@media(max-width:420px){.signage-flow{grid-template-columns:1fr}.signage-card{padding:22px}}

@@ -3,7 +3,7 @@ window.HALO_BLOG = {
   categories: [
     { slug: 'cctv', name: 'CCTV & Security', description: 'CCTV cameras, NVRs, surveillance planning, installation and maintenance.', service: '/cctv-installation-kattappana', serviceId: 'https://haloled.in/cctv-installation-kattappana#service', image: '/assets/card.jpg' },
     { slug: 'led-displays', name: 'LED Displays', description: 'LED displays, pixel pitch, viewing distance and installation planning.', service: '/led-video-wall-kattappana', serviceId: 'https://haloled.in/led-video-wall-kattappana#service', image: '/assets/ledwall.jpg' },
-    { slug: 'digital-signage', name: 'Digital Signage', description: 'Retail price displays, content planning and commercial display solutions.', service: '/led-video-wall-kattappana', serviceId: 'https://haloled.in/led-video-wall-kattappana#service', image: '/assets/flyer.jpg' },
+    { slug: 'digital-signage', name: 'Digital Signage', description: 'Retail price displays, content planning and commercial display solutions.', service: '/digital-signage/', serviceId: 'https://haloled.in/digital-signage/#service', image: '/assets/flyer.jpg' },
     { slug: 'home-automation', name: 'Home Automation', description: 'Smart home planning, sensors, control and integration.', service: '/#solutions', image: '/assets/card.jpg' },
     { slug: 'networking', name: 'Networking & Wi-Fi', description: 'Structured cabling, network infrastructure, Wi-Fi planning and troubleshooting.', service: '/#solutions', image: '/assets/card.jpg' },
     { slug: 'access-control', name: 'Access Control', description: 'Biometric attendance, RFID, access control and door security.', service: '/#solutions', image: '/assets/card.jpg' },
