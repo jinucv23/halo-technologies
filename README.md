@@ -91,9 +91,11 @@ the `#brochure` section following the existing pattern:
 
 Compress anything large before committing — aim for under ~300 KB per image.
 
-**Exact street address** — the map currently points at Kattappana town, not a
-specific building. Update the `src` on the `.map` iframe and the `address` block
-in the JSON-LD once the full address is confirmed.
+**Business location** — the homepage Contact section, map and LocalBusiness
+schema already use the established address at 1st Floor, Kuzhinjaliyil Building,
+Near Head Post Office, Idukki Kavala, Kattappana, Kerala 685508. Preserve these
+details unless the business confirms a change. The schema's `hasMap` and `sameAs`
+share the established Google Maps CID; no geographic coordinates are asserted.
 
 ## Notes
 

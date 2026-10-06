@@ -12,11 +12,12 @@ window.HALO_BLOG = {
     { slug: 'installation-guides', name: 'Installation Guides', description: 'Practical planning methods, installation checks and commissioning guidance.', service: '/#solutions', image: '/assets/card.jpg' },
     { slug: 'buying-guides', name: 'Buying Guides', description: 'Clear buying guidance for technology decisions.', service: '/#solutions', image: '/assets/card.jpg' },
     { slug: 'troubleshooting', name: 'Troubleshooting', description: 'Common faults, first checks and when to call an installer.', service: '/#solutions', image: '/assets/card.jpg' },
-    { slug: 'case-studies', name: 'Case Studies', description: 'Real project learnings, published only with verified project information.', service: '/#solutions', image: '/assets/card.jpg' }
+    { slug: 'case-studies', name: 'Case Studies', description: 'Documented LED display and CCTV installations with original project media.', url: '/projects/', service: '/projects/', image: '/assets/card.jpg' }
   ],
   articles: [
     {
   "id": "cctv-kumily-project",
+  "isCaseStudy": true,
   "slug": "cctv-cardamom-plantation-kumily",
   "category": "cctv",
   "title": "CCTV for a Cardamom Plantation near Kumily – How We Improved Night Security",
@@ -89,6 +90,7 @@ window.HALO_BLOG = {
 },
     {
   "id": "p10-kattappana-project",
+  "isCaseStudy": true,
   "slug": "p10-led-scrolling-board-installation-kattappana",
   "category": "led-displays",
   "title": "P10 LED Scrolling Board Assembly & Installation in Kattappana: A Real-World Project",

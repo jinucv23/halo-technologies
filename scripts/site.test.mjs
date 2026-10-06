@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 14);
+  assert.equal(titles.size, 15);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 14);
+  assert.equal(sitemap.length, 15);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -231,4 +231,29 @@ test('service-area page connects verified geography, capabilities and project ev
     assert.equal(town.containedInPlace.containedInPlace.name, 'Kerala');
     assert.equal(town.containedInPlace.containedInPlace.containedInPlace.name, 'India');
   }
+});
+
+test('project hub connects the two real articles and replaces the empty category', () => {
+  const document = byPath.get('/projects/').document;
+  const graph = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  const projectSlugs = ['p10-led-scrolling-board-installation-kattappana', 'cctv-cardamom-plantation-kumily'];
+  assert.deepEqual(graph.find(node => node['@type'] === 'CollectionPage').mainEntity.map(node => node['@id']),
+    projectSlugs.map(slug => origin + '/blog/article/' + slug + '/#article'));
+  assert.equal(document.querySelectorAll('.project-summary').length, 2);
+  for (const slug of projectSlugs) assert.ok(document.querySelector('a[href="/blog/article/' + slug + '/"]'));
+  for (const path of ['/', '/service-areas/', '/led-video-wall-kattappana', '/cctv-installation-kattappana', '/blog/']) {
+    assert.ok(byPath.get(path).document.querySelector('a[href="/projects/"]'), path);
+  }
+  assert.equal(byPath.has('/blog/category/case-studies/'), false);
+  const redirects = readFileSync(join(dist, '_redirects'), 'utf8');
+  assert.match(redirects, /\/blog\/category\/case-studies\/\s+\/projects\/\s+301/);
+
+  const { document: blogDocument, window } = parseHTML(readFileSync(byPath.get('/blog/').file, 'utf8'));
+  const context = vm.createContext({ document: blogDocument, window, location: { pathname: '/blog/' }, Intl, Date });
+  vm.runInContext(readFileSync(join(root, 'blog/data/articles.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(join(root, 'blog/blog.js'), 'utf8'), context);
+  blogDocument.querySelector('[data-filter="case-studies"]').click();
+  const results = blogDocument.getElementById('articleResults');
+  assert.equal(results.querySelectorAll('.article-card').length, 2);
+  for (const slug of projectSlugs) assert.ok(results.querySelector('a[href="/blog/article/' + slug + '/"]'));
 });

@@ -2,3 +2,6 @@
 # Normal deployments use dist/, which contains neither docs nor scripts.
 /docs/* /404 302
 /scripts/* /404 302
+# Consolidate the former empty case-study category into the real project hub.
+/blog/category/case-studies/ /projects/ 301
+/blog/category/case-studies /projects/ 301
