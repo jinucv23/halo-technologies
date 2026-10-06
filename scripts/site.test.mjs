@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 16);
+  assert.equal(titles.size, 17);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 16);
+  assert.equal(sitemap.length, 17);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -276,6 +276,33 @@ test('digital signage is a static service resource connected to the established 
   const text = document.querySelector('main').textContent;
   for (const detail of ['Content can change without replacing the physical sign', 'Pixel pitch', 'Local Wi-Fi updating does not itself mean internet or cloud control', 'subject to project requirements']) assert.ok(text.includes(detail), detail);
   assert.equal(document.querySelectorAll('table tbody tr').length, 6);
+  assert.equal(document.querySelectorAll('video').length, 0);
+  assert.ok(!graph.some(node => ['LocalBusiness', 'FAQPage', 'Review', 'AggregateRating'].includes(node['@type'])));
+});
+
+test('scrolling-display service links parent signage, pitch guidance and genuine project evidence', () => {
+  const path = '/led-scrolling-display/';
+  const document = byPath.get(path).document;
+  const graph = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  const service = graph.find(node => node['@type'] === 'Service');
+  assert.equal(service['@id'], origin + path + '#service');
+  assert.equal(service.provider['@id'], origin + '/#business');
+  assert.equal(service.mainEntityOfPage['@id'], origin + path + '#webpage');
+  assert.equal(graph.find(node => node['@type'] === 'WebPage').mainEntity['@id'], service['@id']);
+  const breadcrumb = graph.find(node => node['@type'] === 'BreadcrumbList');
+  assert.deepEqual(breadcrumb.itemListElement.map(item => item.name), ['Home', 'Digital Signage', 'LED Scrolling Display']);
+  assert.equal(document.querySelector('[aria-current="page"]').textContent, breadcrumb.itemListElement.at(-1).name);
+  assert.deepEqual(service.areaServed.map(area => area.name), ['Kattappana', 'Idukki']);
+  const homeGraph = JSON.parse(byPath.get('/').document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  assert.equal(homeGraph[0].makesOffer.filter(offer => offer.itemOffered['@id'] === service['@id']).length, 1);
+  const parentGraph = JSON.parse(byPath.get('/digital-signage/').document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  assert.ok(parentGraph.find(node => node['@type'] === 'WebPage').mentions.some(node => node['@id'] === service['@id']));
+  const articlePath = '/blog/article/p10-led-scrolling-board-installation-kattappana/';
+  for (const source of ['/', '/digital-signage/', '/led-video-wall-kattappana', '/projects/', '/service-areas/', articlePath]) assert.ok(byPath.get(source).document.querySelector('a[href="/led-scrolling-display/"]'), source);
+  for (const target of ['/digital-signage/', '/led-video-wall-kattappana', articlePath, '/projects/', '/service-areas/', '/#contact']) assert.ok(document.querySelector('a[href="' + target + '"]'), target);
+  const text = document.querySelector('main').textContent;
+  for (const fact of ['approximately 10 mm', 'adjacent pixel centres', 'Not every LED scrolling display is P10', 'P10 is a pitch designation, not an outdoor rating', 'subject to project requirements']) assert.ok(text.includes(fact), fact);
+  assert.equal(document.querySelectorAll('table tbody tr').length, 5);
   assert.equal(document.querySelectorAll('video').length, 0);
   assert.ok(!graph.some(node => ['LocalBusiness', 'FAQPage', 'Review', 'AggregateRating'].includes(node['@type'])));
 });

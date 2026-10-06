@@ -14,7 +14,7 @@ await mkdir(output, { recursive: true });
 // Explicit public allowlist: docs, scripts, dependencies and repository metadata stay private.
 const publicFiles = ['index.html', '404.html', 'led-video-wall-kattappana.html',
   'cctv-installation-kattappana.html', 'robots.txt', 'sitemap.xml', '_redirects',
-  'service-areas', 'projects', 'digital-signage', 'assets', 'css', 'js', 'blog', 'connect'];
+  'service-areas', 'projects', 'digital-signage', 'led-scrolling-display', 'assets', 'css', 'js', 'blog', 'connect'];
 const keyFiles = (await readdir(root)).filter(name => /^[a-f0-9]{32}\.txt$/.test(name));
 for (const name of [...publicFiles, ...keyFiles]) {
   await cp(join(root, name), join(output, name), { recursive: true });
