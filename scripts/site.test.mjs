@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 13);
+  assert.equal(titles.size, 14);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 13);
+  assert.equal(sitemap.length, 14);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -214,4 +214,21 @@ test('plantation case study is static, connected and uses supplied lightweight m
   const bytes = readFileSync(join(dist, video.querySelector('source').getAttribute('src')));
   assert.ok(bytes.indexOf('moov') < bytes.indexOf('mdat'));
   for (const source of ['/blog/', '/blog/category/cctv/']) assert.ok([...byPath.get(source).document.querySelectorAll('a[href]')].some(a => a.getAttribute('href') === path));
+});
+
+
+test('service-area page connects verified geography, capabilities and project evidence', () => {
+  const page = byPath.get('/service-areas/').document;
+  const text = page.querySelector('main').textContent;
+  for (const fact of ['Kattappana, Idukki, Kerala', 'surrounding areas', 'subject to project requirements', 'LED video walls', 'LED scrolling boards', 'CCTV', 'GPS', 'dash cameras', 'gate automation', 'Kumily']) assert.ok(text.includes(fact), fact);
+  const links = [...page.querySelectorAll('a[href]')].map(a => a.getAttribute('href'));
+  for (const url of ['/led-video-wall-kattappana', '/cctv-installation-kattappana', '/#vehicle-bus-cctv', '/#gps-dash-cam', '/#iot-automation', '/blog/article/p10-led-scrolling-board-installation-kattappana/', '/blog/article/cctv-cardamom-plantation-kumily/']) assert.ok(links.includes(url), url);
+  for (const path of ['/', '/led-video-wall-kattappana', '/cctv-installation-kattappana']) assert.ok([...byPath.get(path).document.querySelectorAll('a[href]')].some(a => a.getAttribute('href') === '/service-areas/'), path);
+  for (const path of ['/', '/led-video-wall-kattappana', '/cctv-installation-kattappana']) {
+    const graph = JSON.parse(byPath.get(path).document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+    const town = graph[0].areaServed.find(area => area.name === 'Kattappana');
+    assert.equal(town.containedInPlace.name, 'Idukki');
+    assert.equal(town.containedInPlace.containedInPlace.name, 'Kerala');
+    assert.equal(town.containedInPlace.containedInPlace.containedInPlace.name, 'India');
+  }
 });
