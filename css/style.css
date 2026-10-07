@@ -218,6 +218,11 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
 .card ul li{font-size:.83rem;color:var(--text);display:flex;align-items:center;gap:9px}
 .card ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--lime);flex:none}
 
+.card .service-related{margin-top:16px}
+.service-context-link{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.service-context-link:hover{color:var(--lime);text-decoration-thickness:2px}
+.service-context-link:focus-visible{text-decoration-thickness:2px}
+
 /* ── Feature ──────────────────────────────────────────────── */
 .feature{
   padding:clamp(72px,9vw,124px) 0;
