@@ -329,3 +329,16 @@ test('home and shop case study preserves display limits, supplied photos and ser
   assert.equal(document.querySelector('table tbody').querySelectorAll('tr').length, 9);
   for (const source of ['/blog/', '/blog/category/cctv/', '/projects/', '/cctv-installation-kattappana']) assert.ok(byPath.get(source).document.querySelector('a[href="' + path + '"]'), source);
 });
+
+
+test('blog pages request the current content-versioned stylesheet', () => {
+  const css = readFileSync(join(root, 'blog/blog.css'));
+  const versionedFiles = files(join(dist, 'blog')).filter(file => /blog\.[a-f0-9]{12}\.css$/.test(file));
+  assert.equal(versionedFiles.length, 1);
+  assert.deepEqual(readFileSync(versionedFiles[0]), css);
+  const href = '/blog/' + versionedFiles[0].split(/[\\/]/).at(-1);
+  for (const page of pages.filter(page => page.path.startsWith('/blog/'))) {
+    assert.ok(page.document.querySelector('link[href="' + href + '"]'), page.path);
+    assert.equal(page.document.querySelector('link[href="/blog/blog.css"]'), null, page.path);
+  }
+});

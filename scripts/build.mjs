@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import { parseHTML } from 'linkedom';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -22,12 +23,18 @@ for (const name of [...publicFiles, ...keyFiles]) {
 
 const data = await readFile(join(root, 'blog/data/articles.js'), 'utf8');
 const renderer = await readFile(join(root, 'blog/blog.js'), 'utf8');
+// A changed stylesheet must get a new URL, even while an old URL is browser-cached.
+const blogCss = await readFile(join(root, 'blog/blog.css'));
+const blogCssName = 'blog.' + createHash('sha256').update(blogCss).digest('hex').slice(0, 12) + '.css';
+await writeFile(join(output, 'blog', blogCssName), blogCss);
 async function renderBlog(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const file = join(dir, entry.name);
     if (entry.isDirectory()) { await renderBlog(file); continue; }
     if (entry.name !== 'index.html') continue;
     const { document, window } = parseHTML(await readFile(file, 'utf8'));
+    const stylesheet = document.querySelector('link[href="/blog/blog.css"]');
+    if (stylesheet) stylesheet.setAttribute('href', '/blog/' + blogCssName);
     // Execute only the two local blog scripts, never analytics or remote scripts.
     // The same templates supply static HTML and the existing browser interactions.
     const context = vm.createContext({ document, window, location: { pathname: '/blog/' }, Intl, Date });
