@@ -20,12 +20,12 @@ window.HALO_BLOG = {
   "isCaseStudy": true,
   "slug": "cctv-home-shop-two-screens-kadassikadavu",
   "category": "cctv",
-  "title": "One CCTV System, Two Viewing Screens: Home and Shop Installation in Kadassikadavu",
-  "description": "A six-camera installation in Kadassikadavu, Vandanmedu, brings a ground-floor shop and first-floor home together with one recorder and mirrored CCTV viewing screens.",
+  "title": "One CCTV System, Two Viewing Screens: Home and Shop Installation in Vandanmedu",
+  "description": "A six-camera installation in Vandanmedu brings a ground-floor shop and first-floor home together with one recorder and mirrored CCTV viewing screens.",
   "author": "Halo Technologies",
   "publishedDate": "2026-10-09",
   "modifiedDate": "2026-10-09",
-  "breadcrumbTitle": "Home and Shop CCTV in Kadassikadavu",
+  "breadcrumbTitle": "Home and Shop CCTV in Vandanmedu",
   "readingTime": "6 min read",
   "image": "/assets/blog/kadassikadavu-prama-ip-camera-960.webp",
   "imageAlt": "PRAMA bullet camera mounted beneath the ceiling beside a junction box",
@@ -45,13 +45,13 @@ window.HALO_BLOG = {
     "cctv-kumily-project",
     "cctv-placement"
   ],
-  "seoTitle": "Home and Shop CCTV in Kadassikadavu | Halo Technologies",
-  "seoDescription": "A six-camera CCTV installation in Kadassikadavu, Vandanmedu, with one Hikvision DVR at home and mirrored viewing screens upstairs and at the shop counter.",
+  "seoTitle": "Home and Shop CCTV in Vandanmedu | Halo Technologies",
+  "seoDescription": "A six-camera CCTV installation in Vandanmedu, Idukki, with one Hikvision DVR at home and mirrored viewing screens upstairs and at the shop counter.",
   "takeaway": "Six cameras share one compatible Hikvision DVR in the first-floor home. An HDMI splitter and an extender over approximately 30 metres of Cat6 cable deliver the same recorder display to the home and shop-counter screens.",
   "sections": [
     [
       "Project summary",
-      "<p>A shop owner in Kadassikadavu, Vandanmedu, Idukki, wanted to see the CCTV cameras both at the ground-floor shop counter and in the first-floor home. Halo Technologies designed a six-camera installation around this requirement, combining different camera types with one compatible Hikvision recording system and two viewing screens.</p><p>The DVR stays in the home upstairs. An HDMI splitter shares its display with both screens, and an HDMI extender carries the display to the shop over approximately 30 metres of Cat6 cable. Both screens show the same recorder output.</p><p>Explore our <a href=\"/cctv-installation-kattappana\">CCTV installation service for homes and shops</a>. Publication date refers to this article, not the installation date.</p>"
+      "<p>A shop owner in Vandanmedu wanted to see the CCTV cameras both at the ground-floor shop counter and in the first-floor home. At this property in Kadassikadavu, Vandanmedu, Idukki, Halo Technologies designed a six-camera installation around this requirement, combining different camera types with one compatible Hikvision recording system and two viewing screens.</p><p>The DVR stays in the home upstairs. An HDMI splitter shares its display with both screens, and an HDMI extender carries the display to the shop over approximately 30 metres of Cat6 cable. Both screens show the same recorder output.</p><p>Explore our <a href=\"/cctv-installation-kattappana\">CCTV installation service for homes and shops</a>. Publication date refers to this article, not the installation date.</p>"
     ],
     [
       "What the customer needed",
