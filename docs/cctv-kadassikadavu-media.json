@@ -1,0 +1,87 @@
+[
+  {
+    "source": "C:\\Users\\user\\Downloads\\IMG-20261009-WA0004.jpg",
+    "files": [
+      [
+        "kadassikadavu-prama-ip-camera-480.webp",
+        480,
+        640
+      ],
+      [
+        "kadassikadavu-prama-ip-camera-960.webp",
+        960,
+        1280
+      ]
+    ],
+    "caption": "Installed PRAMA camera with its mounting bracket and junction box.",
+    "alt": "PRAMA bullet camera mounted beneath the ceiling beside a junction box"
+  },
+  {
+    "source": "C:\\Users\\user\\Downloads\\IMG-20261009-WA0000.jpg",
+    "files": [
+      [
+        "kadassikadavu-hikvision-camera-ceiling-480.webp",
+        480,
+        1059
+      ],
+      [
+        "kadassikadavu-hikvision-camera-ceiling-960.webp",
+        725,
+        1600
+      ]
+    ],
+    "caption": "Hikvision camera mounted beneath a ceiling junction box.",
+    "alt": "Hikvision bullet camera mounted below a ceiling junction box"
+  },
+  {
+    "source": "C:\\Users\\user\\Downloads\\IMG-20261009-WA0003.jpg",
+    "files": [
+      [
+        "kadassikadavu-hikvision-camera-conduit-480.webp",
+        480,
+        640
+      ],
+      [
+        "kadassikadavu-hikvision-camera-conduit-960.webp",
+        960,
+        1280
+      ]
+    ],
+    "caption": "Installed Hikvision camera beside a junction box and conduit.",
+    "alt": "Hikvision bullet camera with a junction box and corrugated conduit"
+  },
+  {
+    "source": "C:\\Users\\user\\Downloads\\IMG-20261009-WA0001.jpg",
+    "files": [
+      [
+        "kadassikadavu-hdmi-splitter-480.webp",
+        480,
+        1059
+      ],
+      [
+        "kadassikadavu-hdmi-splitter-960.webp",
+        725,
+        1600
+      ]
+    ],
+    "caption": "HDMI splitter labelled with four output ports. This project uses two viewing locations.",
+    "alt": "HI-FOCUS four-port HDMI splitter held in front of equipment shelving"
+  },
+  {
+    "source": "C:\\Users\\user\\Downloads\\IMG-20261009-WA0002.jpg",
+    "files": [
+      [
+        "kadassikadavu-hdmi-connection-accessories-480.webp",
+        480,
+        1059
+      ],
+      [
+        "kadassikadavu-hdmi-connection-accessories-960.webp",
+        725,
+        1600
+      ]
+    ],
+    "caption": "HDMI connection accessories shown in the project photo. This photo does not establish that they are HDMI extenders.",
+    "alt": "Two black HDMI connection accessories with visible HDMI plugs"
+  }
+]

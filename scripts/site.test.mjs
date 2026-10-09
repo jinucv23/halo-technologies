@@ -56,11 +56,11 @@ test('all useful pages have unique titles, descriptions, H1s and self canonicals
     assert.ok(description && !descriptions.has(description), path); descriptions.add(description);
     assert.ok(sitemap.includes(origin + path), `missing sitemap: ${path}`);
   }
-  assert.equal(titles.size, 17);
+  assert.equal(titles.size, 18);
 });
 test('sitemap only lists unique indexable canonical pages', () => {
   assert.equal(new Set(sitemap).size, sitemap.length);
-  assert.equal(sitemap.length, 17);
+  assert.equal(sitemap.length, 18);
   for (const url of sitemap) {
     const target = new URL(url); assert.equal(target.origin, origin); assert.equal(target.hash, '');
     const page = byPath.get(target.pathname); assert.ok(page, url);
@@ -100,7 +100,7 @@ test('JSON-LD has one business definition and consistent provider/publisher refe
     Object.values(value).forEach(visit);
   }
   for (const { document } of pages) for (const script of document.querySelectorAll('script[type="application/ld+json"]')) visit(JSON.parse(script.textContent));
-  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 6);
+  assert.equal(businesses, 1); assert.equal(websites, 1); assert.equal(articles, 7);
 });
 test('analytics retained on every page that previously included it; public robots allowed', () => {
   for (const { file, document } of pages) {
@@ -233,13 +233,13 @@ test('service-area page connects verified geography, capabilities and project ev
   }
 });
 
-test('project hub connects the two real articles and replaces the empty category', () => {
+test('project hub connects the real articles and replaces the empty category', () => {
   const document = byPath.get('/projects/').document;
   const graph = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
-  const projectSlugs = ['p10-led-scrolling-board-installation-kattappana', 'cctv-cardamom-plantation-kumily'];
+  const projectSlugs = ['p10-led-scrolling-board-installation-kattappana', 'cctv-cardamom-plantation-kumily', 'cctv-home-shop-two-screens-kadassikadavu'];
   assert.deepEqual(graph.find(node => node['@type'] === 'CollectionPage').mainEntity.map(node => node['@id']),
     projectSlugs.map(slug => origin + '/blog/article/' + slug + '/#article'));
-  assert.equal(document.querySelectorAll('.project-summary').length, 2);
+  assert.equal(document.querySelectorAll('.project-summary').length, 3);
   for (const slug of projectSlugs) assert.ok(document.querySelector('a[href="/blog/article/' + slug + '/"]'));
   for (const path of ['/', '/service-areas/', '/led-video-wall-kattappana', '/cctv-installation-kattappana', '/blog/']) {
     assert.ok(byPath.get(path).document.querySelector('a[href="/projects/"]'), path);
@@ -254,7 +254,7 @@ test('project hub connects the two real articles and replaces the empty category
   vm.runInContext(readFileSync(join(root, 'blog/blog.js'), 'utf8'), context);
   blogDocument.querySelector('[data-filter="case-studies"]').click();
   const results = blogDocument.getElementById('articleResults');
-  assert.equal(results.querySelectorAll('.article-card').length, 2);
+  assert.equal(results.querySelectorAll('.article-card').length, 3);
   for (const slug of projectSlugs) assert.ok(results.querySelector('a[href="/blog/article/' + slug + '/"]'));
 });
 
@@ -305,4 +305,27 @@ test('scrolling-display service links parent signage, pitch guidance and genuine
   assert.equal(document.querySelectorAll('table tbody tr').length, 5);
   assert.equal(document.querySelectorAll('video').length, 0);
   assert.ok(!graph.some(node => ['LocalBusiness', 'FAQPage', 'Review', 'AggregateRating'].includes(node['@type'])));
+});
+
+
+test('home and shop case study preserves display limits, supplied photos and service discovery', () => {
+  const path = '/blog/article/cctv-home-shop-two-screens-kadassikadavu/';
+  const document = byPath.get(path).document;
+  const text = document.querySelector('article').textContent;
+  for (const fact of ['Both screens mirror', 'approximately 30 metres', 'separate from the IP camera', 'audio activation and testing have not been confirmed', 'does not mean every camera records at 5 MP']) assert.ok(text.includes(fact), fact);
+  const photos = [...document.querySelectorAll('.project-media img')];
+  assert.equal(photos.length, 5);
+  assert.equal(new Set(photos.map(image => image.getAttribute('src'))).size, 5);
+  for (const image of photos) {
+    assert.ok(image.getAttribute('alt'));
+    assert.ok(image.parentElement.querySelector('figcaption').textContent);
+    for (const candidate of image.getAttribute('srcset').split(',')) assert.ok(existsSync(join(dist, candidate.trim().split(' ')[0])));
+  }
+  const graph = JSON.parse(document.getElementById('structuredData').textContent)['@graph'];
+  const article = graph.find(node => node['@type'] === 'Article');
+  assert.equal(article.datePublished, '2026-10-09');
+  assert.equal(article.about['@id'], origin + '/cctv-installation-kattappana#service');
+  assert.equal(document.querySelector('meta[property="og:image"]').content, article.image);
+  assert.equal(document.querySelector('table tbody').querySelectorAll('tr').length, 9);
+  for (const source of ['/blog/', '/blog/category/cctv/', '/projects/', '/cctv-installation-kattappana']) assert.ok(byPath.get(source).document.querySelector('a[href="' + path + '"]'), source);
 });

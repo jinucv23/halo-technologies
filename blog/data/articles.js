@@ -15,6 +15,88 @@ window.HALO_BLOG = {
     { slug: 'case-studies', name: 'Case Studies', description: 'Documented LED display and CCTV installations with original project media.', url: '/projects/', service: '/projects/', image: '/assets/card.jpg' }
   ],
   articles: [
+{
+  "id": "cctv-kadassikadavu-project",
+  "isCaseStudy": true,
+  "slug": "cctv-home-shop-two-screens-kadassikadavu",
+  "category": "cctv",
+  "title": "One CCTV System, Two Viewing Screens: Home and Shop Installation in Kadassikadavu",
+  "description": "A six-camera installation in Kadassikadavu, Vandanmedu, brings a ground-floor shop and first-floor home together with one recorder and mirrored CCTV viewing screens.",
+  "author": "Halo Technologies",
+  "publishedDate": "2026-10-09",
+  "modifiedDate": "2026-10-09",
+  "breadcrumbTitle": "Home and Shop CCTV in Kadassikadavu",
+  "readingTime": "6 min read",
+  "image": "/assets/blog/kadassikadavu-prama-ip-camera-960.webp",
+  "imageAlt": "PRAMA bullet camera mounted beneath the ceiling beside a junction box",
+  "imageWidth": 960,
+  "imageHeight": 1280,
+  "imageCaption": "Installed PRAMA camera with its mounting bracket and junction box.",
+  "tags": [
+    "cctv",
+    "case study",
+    "Kadassikadavu",
+    "Vandanmedu"
+  ],
+  "relatedServices": [
+    "/cctv-installation-kattappana"
+  ],
+  "relatedArticles": [
+    "cctv-kumily-project",
+    "cctv-placement"
+  ],
+  "seoTitle": "Home and Shop CCTV in Kadassikadavu | Halo Technologies",
+  "seoDescription": "A six-camera CCTV installation in Kadassikadavu, Vandanmedu, with one Hikvision DVR at home and mirrored viewing screens upstairs and at the shop counter.",
+  "takeaway": "Six cameras share one compatible Hikvision DVR in the first-floor home. An HDMI splitter and an extender over approximately 30 metres of Cat6 cable deliver the same recorder display to the home and shop-counter screens.",
+  "sections": [
+    [
+      "Project summary",
+      "<p>A shop owner in Kadassikadavu, Vandanmedu, Idukki, wanted to see the CCTV cameras both at the ground-floor shop counter and in the first-floor home. Halo Technologies designed a six-camera installation around this requirement, combining different camera types with one compatible Hikvision recording system and two viewing screens.</p><p>The DVR stays in the home upstairs. An HDMI splitter shares its display with both screens, and an HDMI extender carries the display to the shop over approximately 30 metres of Cat6 cable. Both screens show the same recorder output.</p><p>Explore our <a href=\"/cctv-installation-kattappana\">CCTV installation service for homes and shops</a>. Publication date refers to this article, not the installation date.</p>"
+    ],
+    [
+      "What the customer needed",
+      "<p>The owner wanted convenient viewing on both floors while keeping one recording system in the first-floor home. The display arrangement lets the owner see the same camera view at home and at the shop counter without adding a second recorder.</p>"
+    ],
+    [
+      "Installation facts",
+      "<table class=\"case-study-facts\"><caption>Home and shop CCTV installation facts</caption><thead><tr><th scope=\"col\">Item</th><th scope=\"col\">Installed arrangement</th></tr></thead><tbody><tr><th scope=\"row\">Project location</th><td>Kadassikadavu, Vandanmedu, Idukki, Kerala</td></tr><tr><th scope=\"row\">Property</th><td>Ground-floor shop with the owner's home on the first floor</td></tr><tr><th scope=\"row\">Cameras</th><td>Six total: one PRAMA IP camera, one analogue ColorVu camera and four analogue infrared cameras</td></tr><tr><th scope=\"row\">Resolution mix</th><td>PRAMA IP camera: 2 MP. One analogue bullet camera: 5 MP. The remaining four analogue cameras: 2 MP</td></tr><tr><th scope=\"row\">Audio capability</th><td>All six cameras support audio recording; whether audio was enabled or tested is not confirmed</td></tr><tr><th scope=\"row\">Recorder</th><td>Compatible Hikvision DVR with 5 MP support, kept in the first-floor home</td></tr><tr><th scope=\"row\">Viewing locations</th><td>First-floor home and ground-floor shop counter</td></tr><tr><th scope=\"row\">Display distribution</th><td>HDMI splitter and HDMI extender, with approximately 30 metres of Cat6 cable for the shop display link</td></tr><tr><th scope=\"row\">Screen behaviour</th><td>Both screens mirror the recorder's output</td></tr></tbody></table><p>The supplied details do not establish whether the 5 MP analogue bullet camera is the ColorVu camera or one of the infrared cameras. The DVR's 5 MP support does not mean every camera records at 5 MP. Recording modes and settings have not been supplied.</p>"
+    ],
+    [
+      "Choosing cameras for the location",
+      "<p>Halo Technologies combined IP, analogue infrared and analogue ColorVu cameras rather than using the same camera everywhere. The selection reflects the owner's needs and the practical conditions at the camera locations, including lighting, the area to be covered and the available installation arrangement.</p><p>The resolution mix includes a 5 MP analogue bullet camera alongside five 2 MP cameras. Megapixels describe image resolution, but useful detail also depends on where a camera is placed, what its view includes and how much light is available. A higher resolution alone cannot compensate for an obstructed view or unsuitable positioning.</p><p>The project record does not identify the exact view assigned to each camera, so this case study does not attribute a particular camera to a doorway, cash counter or other unconfirmed position.</p>"
+    ],
+    [
+      "Different camera technologies, one recording system",
+      "<p>An <strong>IP camera</strong> sends video through a network connection. This installation includes one 2 MP PRAMA IP camera with infrared and white-light illumination options. Those options provide different ways to illuminate a scene; the supplied details do not establish an automatic switching mode.</p><p>An <strong>analogue camera</strong> sends its video signal over a compatible wired connection to the recorder. Five analogue cameras are included here: one ColorVu camera and four infrared cameras.</p><p><strong>IR</strong>, short for infrared, helps a compatible camera view a scene in darkness and typically produces black-and-white night images. <strong>ColorVu</strong> supports colour imaging in low light, subject to the particular model and lighting conditions. It should not be understood as a promise of colour images in every dark scene.</p><p>A <strong>DVR</strong>, or digital video recorder, stores camera footage. In this project, the compatible Hikvision DVR brings the analogue cameras and the IP camera into one recording system. All six cameras support audio recording. This describes their capability; audio activation and testing have not been confirmed.</p>"
+    ],
+    [
+      "How the display reaches home and shop",
+      "<p><strong>HDMI</strong> carries the recorder's display signal to a screen. An <strong>HDMI splitter</strong> distributes the same output to two display paths: one for the home and one for the shop counter.</p><p>An <strong>HDMI extender</strong> carries the shop display signal over approximately 30 metres of Cat6 cable. Cat6 is a cable type also commonly used for computer networking, but this particular cable link carries the extended HDMI display signal. It is separate from the IP camera's network connection.</p><p>The arrangement is:</p><ul><li>Six cameras connect to one compatible DVR in the first-floor home.</li><li>The DVR's HDMI output feeds an HDMI splitter.</li><li>One display path serves the home screen.</li><li>The other uses an HDMI extender and the Cat6 cable run to reach the shop-counter screen.</li></ul><p>Both screens mirror the DVR output. They do not provide independent camera layouts or independent playback control. The display extender does not, by itself, provide remote control of the DVR from the shop counter.</p>"
+    ],
+    [
+      "Practical benefits for the owner",
+      "<p>The owner can view the same camera display at either location, making it convenient to check the premises while upstairs or working at the shop counter. One recorder keeps the recording arrangement together in the home.</p><p>The camera mix also shows why a CCTV installation should be planned around the property. Camera technology, resolution, lighting, placement, coverage and cable routes all contribute to a useful system.</p>"
+    ],
+    [
+      "Original project photo gallery",
+      "<figure class=\"project-media\"><img src=\"/assets/blog/kadassikadavu-prama-ip-camera-960.webp\" srcset=\"/assets/blog/kadassikadavu-prama-ip-camera-480.webp 480w, /assets/blog/kadassikadavu-prama-ip-camera-960.webp 960w\" sizes=\"(max-width: 620px) 90vw, 760px\" alt=\"PRAMA bullet camera mounted beneath the ceiling beside a junction box\" width=\"960\" height=\"1280\" loading=\"lazy\"><figcaption>Installed PRAMA camera with its mounting bracket and junction box.</figcaption></figure><figure class=\"project-media\"><img src=\"/assets/blog/kadassikadavu-hikvision-camera-ceiling-960.webp\" srcset=\"/assets/blog/kadassikadavu-hikvision-camera-ceiling-480.webp 480w, /assets/blog/kadassikadavu-hikvision-camera-ceiling-960.webp 725w\" sizes=\"(max-width: 620px) 90vw, 760px\" alt=\"Hikvision bullet camera mounted below a ceiling junction box\" width=\"725\" height=\"1600\" loading=\"lazy\"><figcaption>Hikvision camera mounted beneath a ceiling junction box.</figcaption></figure><figure class=\"project-media\"><img src=\"/assets/blog/kadassikadavu-hikvision-camera-conduit-960.webp\" srcset=\"/assets/blog/kadassikadavu-hikvision-camera-conduit-480.webp 480w, /assets/blog/kadassikadavu-hikvision-camera-conduit-960.webp 960w\" sizes=\"(max-width: 620px) 90vw, 760px\" alt=\"Hikvision bullet camera with a junction box and corrugated conduit\" width=\"960\" height=\"1280\" loading=\"lazy\"><figcaption>Installed Hikvision camera beside a junction box and conduit.</figcaption></figure><figure class=\"project-media\"><img src=\"/assets/blog/kadassikadavu-hdmi-splitter-960.webp\" srcset=\"/assets/blog/kadassikadavu-hdmi-splitter-480.webp 480w, /assets/blog/kadassikadavu-hdmi-splitter-960.webp 725w\" sizes=\"(max-width: 620px) 90vw, 760px\" alt=\"HI-FOCUS four-port HDMI splitter held in front of equipment shelving\" width=\"725\" height=\"1600\" loading=\"lazy\"><figcaption>HDMI splitter labelled with four output ports. This project uses two viewing locations.</figcaption></figure><figure class=\"project-media\"><img src=\"/assets/blog/kadassikadavu-hdmi-connection-accessories-960.webp\" srcset=\"/assets/blog/kadassikadavu-hdmi-connection-accessories-480.webp 480w, /assets/blog/kadassikadavu-hdmi-connection-accessories-960.webp 725w\" sizes=\"(max-width: 620px) 90vw, 760px\" alt=\"Two black HDMI connection accessories with visible HDMI plugs\" width=\"725\" height=\"1600\" loading=\"lazy\"><figcaption>HDMI connection accessories shown in the project photo. This photo does not establish that they are HDMI extenders.</figcaption></figure>"
+    ]
+  ],
+  "tips": [
+    "Plan camera placement, lighting and coverage together.",
+    "Specify where you need viewing screens as well as where the recorder will stay.",
+    "Check camera and recorder compatibility before combining IP and analogue equipment."
+  ],
+  "mistakes": [
+    "Assuming both screens provide independent playback or camera layouts.",
+    "Confusing the Cat6 HDMI display link with the IP camera network connection.",
+    "Assuming DVR 5 MP support means every camera records at 5 MP."
+  ],
+  "faq": [],
+  "ctaTitle": "Planning CCTV for a home and shop?",
+  "ctaDescription": "Tell Halo Technologies your location, the areas you want to monitor and where you need viewing screens. We can help plan coverage, recording and viewing arrangements for your property in Idukki.",
+  "authorNote": "Based on project details and five genuine photographs supplied by Halo Technologies. Camera audio activation and testing are not confirmed. Publication date is not the installation date."
+},
     {
   "id": "cctv-kumily-project",
   "isCaseStudy": true,
