@@ -9,4 +9,4 @@
 .project-facts{margin:22px 0}.project-facts dt{font-weight:700;color:var(--white);margin-top:16px}.project-facts dd{margin:4px 0 0;color:var(--text)}
 
 /* Customer case-study facts remain readable on narrow screens. */
-.case-study-facts{width:100%;border-collapse:collapse;table-layout:fixed;margin:24px 0}.case-study-facts caption{text-align:left;font-weight:700;margin-bottom:12px}.case-study-facts th,.case-study-facts td{text-align:left;vertical-align:top;padding:12px;border:1px solid var(--line);overflow-wrap:anywhere}.case-study-facts th:first-child{width:36%}.article-content a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+.case-study-facts{width:100%;border-collapse:collapse;table-layout:fixed;margin:24px 0}.case-study-facts caption{text-align:left;font-weight:700;margin-bottom:12px}.case-study-facts th,.case-study-facts td{text-align:left;vertical-align:top;padding:12px;border:1px solid var(--line);overflow-wrap:anywhere}.case-study-facts th:first-child{width:36%}.article-content a:not(.btn){color:var(--lime);text-decoration:underline;text-underline-offset:3px}
